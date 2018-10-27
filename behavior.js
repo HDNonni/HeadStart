@@ -447,21 +447,26 @@ let costs = [.25, .27, .23, .25, .25, .25, .33, .31, .25, .29];
 //whenever you are managing indices of multiple arrays things can get tricky.
 //Let’s do that; in the long run I’m sure it will be faster to plan it first.
 function bestCost() {
-    //what to compare to
+    //what to compare to/ start with high cost and lower each time function finds a lower cost
     let lowestCostSeenSoFar = 100;
     //what index represents the lowest cost to keep track of the index to match high score with low cost
     let indexWithTheLowestCost;
-    //get the highest score again
+    //get the highest score again 
     for (let i = 0; i < scores.length; i++) {
+        //chceck to see if the score has the high score
         if (scores[i] == highScore) {
+            //if true than check its cost
             if (costs[i] < lowestCostSeenSoFar) {
+                //keep track of the index in the array 
                 indexWithTheLowestCost = i;
                 //assigned to be costs[i]
                 //value of lowestCostSeenSoFar is set to the cost of the bubble solution
+                //store its cost in the lowestCostSenSoFar variable
                 lowestCostSeenSoFar = costs[i]
             }
         }
     }
+    //solution with the highest score /lowest cost stored and returned to function
     return indexWithTheLowestCost;
 
 }
@@ -489,6 +494,8 @@ let last = flavors.length - 1;
 console.log(last);
 let recent = flavors[last];
 console.log("last one added to array is " + recent)
+
+//Phrase o matic
 function makePhrases() {
     let words1 = ["this", "that", "other", "thing"];
     let words2 = ["then", "now", "never", "sometimes"];
@@ -522,5 +529,154 @@ function bubbleGum() {
     }
 }
 bubbleGum();
+//object used in the preQual function  below
+let cars = {
+    make: "Chevy",
+    model: "Impala",
+    //changed to older date to get 1st condition in second if statement line 651ish
+    year: 1961,
+    type: "4-door",
+    color: "red",
+    tires: "whiteWall",
+    //changed mileage
+    mileage: 8000
+};
+let cars2 = {
+    make: "Cadallac",
+    model: "BelAir",
+    year: 1955,
+    type: "4-door",
+    color: "tan",
+    mileage: 12892
+}
+cars2.needsWashing = true;
+console.log(cars.make + " " + cars.model);
+console.log(cars2.make + ' is not better than ' + cars.make)
+console.log(cars2.needsWashing);
+if (cars2.make == "honda") {
+    console.log("this is true")
+} else {
+    console.log("this is false")
+}
+function dogObject() {
+    let dogs = {
+        name: "Fido",
+        weights: 20.2,
+        age: 4,
+        breed: "mixed",
+        activity: "fetch balls"
+    };
 
+    if (dogs.weights > 20) {
+        dogs.barks = "WOOF WOOF";
+    } else {
+        dogs.barks = "woof-woof";
+    }
+    let speak = dogs.name + " says " + dogs.barks + " when he wants to " + dogs.activity;
+    console.log(speak);
+}
+dogObject();
+//creating objects w/ no properties
+let noProps = {};
+noProps.song = "no lyrics";
+if (noProps.song == true) {
+    noProps.songList = "has lyrics"
+}
+console.log(noProps)
+//pass the function an object parameter
+
+//copied from book
+var taxi = {
+    make: "Webville Motors",
+    model: "Taxi",
+    year: 1955,
+    color: "yellow",
+    passengers: 4,
+    convertible: false,
+    mileage: 1341
+    //mileage: 281341
+};
+function prequal(car) {
+    if (car.mileage > 10000) {
+        return false;
+    } else if (car.year > 1960) {
+        return false;
+        
+    }
+    return true;
+}
+//passed in taxi argument
+var worthALook = prequal(taxi);
+if (worthALook) {
+    console.log("You gotta check out this " + taxi.make + " " + taxi.model);
+} else {
+    console.log("You should really pass on the " + taxi.make + " " + taxi.model);
+}
+
+//so when changed the parameter to junk along with all occurrences it still works
+//how is this possible when nothing in this function points to the cars objec?
+//answered my own question with further investigation used above example, taxi passed in as an argument to the function 
+
+function preQual(cars) {
+    //access mileage and year w/ dot notation and test
+    if (cars.mileage > 10000) {
+        //false returned because cars mileage is greater than 10000
+        //so myCar(below) is set to false and 1st test is true
+        return false
+        //***does this mean older than? because 1955 is less than 1960 , but older
+        //if you say no to the condition ie is 155 greater than 1960 then false
+        //no means false
+    } else if (cars.year > 1960) {
+        return false
+    }
+    //if both tests return false then no preQual otherwise we return true to pre qualify
+    return true;
+}
+let myCar = preQual(cars);
+console.log(myCar);
+if (myCar) {
+    console.log("Check out this " + cars.make + " " + cars.model)
+} else {
+    console.log("Pass on this " + cars.make + " " + cars.model)
+}
+
+//sharpen your pencil exercise page 194
+//function to return contents of file if password correct
+function getSecret(file, secretPassword) {
+    //superSecretFile assigning file + 1 for times opened
+    //so file equals superSecretFile as in parameter
+    file.opened = file.opened + 1;
+    //if conditions met , file returned
+    if (secretPassword == file.password) {
+        return file.contents;
+    } else {
+        //conditions not met then message returned
+        return "Invalid password! No secret for you.";
+    }
+}
+
+//function to update the contents of the file and reset tracking to 0
+function setSecret(file, secretPassword, secret) {
+    if (secretPassword == file.password) {
+        file.opened = 0;
+        file.contents = secret;
+    }
+}
+
+//superSecretFile object
+let superSecretFile = {
+    level: "classified",
+    opened: 0,
+    password: 2,
+    contents: "Dr. Evel's next meeting is in Detroit"
+};
+//get a response from getSecret if password incorrrect but undefined if correct?
+//book passes the superSecretFile object to get and set page223
+//because of a mistake of a spelling error, works now!
+let secret = getSecret(superSecretFile, 2);
+console.log(secret);
+
+setSecret(superSecretFile, 2, "Dr Evel's  next meeting is in Philadelphia");
+secret = getSecret(superSecretFile, 2);
+console.log(secret);
 

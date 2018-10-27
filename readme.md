@@ -91,3 +91,9 @@ ___email___ on his phone.
 14. It’s better to use __local______ variables whenever you
 can.
 15. Extra arguments to a function are __IGNORED________.
+
+objects are simply a collection of properties
+
+a reference to an object goes into a variable , not the object itself
+
+arguments in functions are passed by value ie pass by copy

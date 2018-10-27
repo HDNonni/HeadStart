@@ -1,0 +1,8 @@
+html{
+    background-color: linen;
+}
+#autoHeading{
+    text-align:center;
+    text-decoration: underline;
+    color: orange;
+}
