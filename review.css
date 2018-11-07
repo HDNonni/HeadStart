@@ -6,3 +6,9 @@ html{
     text-decoration: underline;
     color: orange;
 }
+#greenHeading{
+    color: green;
+}
+.redText{
+    color:red;
+}
