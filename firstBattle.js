@@ -1,7 +1,7 @@
 
 //hard code location positions for now
 //math.random added to randomize ships position
-let randomLoc = Math.floor(Math.random() * 5);
+let randomLoc = Math.floor(Math.random() * 40);
 let loc1 = randomLoc;
 let loc2 = loc1 + 1;
 let loc3 = loc2 + 1;
@@ -20,20 +20,21 @@ document.getElementById("userGuess").onkeypress = function keyFunction(event){
 } this was added to input also - onkeypress = "keyFunction(event)"
 */
 //click handler for "button"
-document.getElementById("button").addEventListener("click", function () {
+document.getElementById("fireButton").addEventListener("click", function () {
     console.log("button clicked:")
 })
+/** 
 //how to only let user choose each # once
 function battleShip() {
     //create loop and get user guesses
-    while (isSunk == false) {
+    //while (isSunk == false) {
         //use promt first to test 
-        guess = prompt("Ready? Enter a number 0-6");
+        //guess = prompt("Ready? Enter a number 0-6");
         //guess = document.getElementById("userGuess").value;
         //document.getElementById("whatGuessIs").innerHTML = guess;
         if (guess < 0 || guess > 6) {
 
-            alert("Invalid number");
+            console.log("Invalid number");
 
         } else {
             //add to guesses
@@ -42,22 +43,23 @@ function battleShip() {
         }
         if (guess == loc1 || guess == loc2 || guess == loc3) {
             //add one to the number of hits if hit loc1 0r 2 0r 3
-            alert("Hit!");
+            console.log("Hit!");
             hits++
 
             if (hits == 3) {
                 isSunk = true;
-                alert("You sank my battleship!")
+                console.log("You sank my battleship!")
             }
         } else {
-            alert("Miss!");
+            console.log("Miss!");
         }
         //if (guesses == guess) {
-          //  alert("You already picked that number")
+        //  alert("You already picked that number")
         //}
-    }
+   // }
     let stats = " You took " + guesses + " guesses to sink the battleship " +
         " which means your accuracy was " + (3 / guesses);
-    alert(stats);
+    console.log(stats);
 }
 //battleShip();
+*/

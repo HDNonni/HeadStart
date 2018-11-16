@@ -1,20 +1,57 @@
 body, html{
     box-sizing: border-box;
+    background-color: black;
     background-image: url("board.png");
-    background-size:cover;
     background-repeat: no-repeat;
+    height:100%;
 }
-
+h1#heading{
+    position: absolute;
+    color:white;
+    top:0;
+    left:0px;
+}
+/**Board vid positioned relative so everything inside an be positioned relative to the board*/
+div#board{
+    position: relative;
+    height:100%; 
+}
+/*positoned top right of board*/
+h1#messageArea{
+    position: absolute;
+    top:0;
+    right:50px;
+    color: rgb(83, 175, 19);
+}
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto;
-    background-color:limegreen;
+    position: absolute;
+    grid-template-columns:90px 94px 95px 95px 95px 95px 95px ; 
+    grid-template-rows: 100px 95px 100px 95px 95px 95px 95px ;
+    /*margin: 50px 400px 200px 170px;*/
+    top: 80px;
+    left:165px;
+    background-color:black;
     padding: 10px;
+    opacity:0.5;
   }
   .gameCell {
     background-color: rgba(15, 14, 14, 0.8);
     border: 1px solid rgba(111, 180, 50, 0.521);
-    padding: 20px;
-    font-size: 30px;
+    padding:42px;
+    font-size: 15px;
     text-align: center;
+  }
+  form#inputField{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      /* padding:10px; */
+  }
+  .hit{
+      padding:0; 
+      background: url("ship1.png") no-repeat center center;
+  }
+  .miss{
+      background: url("miss.png") no-repeat center center;
   }

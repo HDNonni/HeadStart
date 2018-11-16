@@ -601,7 +601,7 @@ function prequal(car) {
         return false;
     } else if (car.year > 1960) {
         return false;
-
+        
     }
     return true;
 }
@@ -679,3 +679,4 @@ console.log(secret);
 setSecret(superSecretFile, 2, "Dr Evel's  next meeting is in Philadelphia");
 secret = getSecret(superSecretFile, 2);
 console.log(secret);
+
