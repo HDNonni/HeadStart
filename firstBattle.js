@@ -23,6 +23,7 @@ document.getElementById("userGuess").onkeypress = function keyFunction(event){
 document.getElementById("fireButton").addEventListener("click", function () {
     console.log("button clicked:")
 })
+//trying second attempt
 /** 
 //how to only let user choose each # once
 function battleShip() {
@@ -63,3 +64,46 @@ function battleShip() {
 }
 //battleShip();
 */
+
+//for controller object written by mme , continued with book to implement parse guess
+let valid = false;
+if (guess.length == 2) {
+    let firstCharacter = guess[0].toUpperCase();
+    let firstCharValid = false;
+    if (firstCharacter == "A") {
+        firstCharValid = true;
+    } else if (firstCharacter == "B") {
+        firstCharValid = true;
+    } else if (firstCharacter == "C") {
+        firstCharValid = true;
+    } else if (firstCharacter == "D") {
+        firstCharValid = true;
+    } else if (firstCharacter == "E") {
+        firstCharValid = true;
+    } else if (firstCharacter == "F") {
+        firstCharValid = true;
+    } else if (firstCharacter == "G") {
+        firstCharValid = true;
+    }
+    console.log("firstCharacter:" + firstCharacter);
+    console.log("firstCharValid:" + firstCharValid);
+    //number to convert the string guess to a number
+    let secondChar = Number(guess[1]);
+    let secCharValid = false;
+    if (secondChar >= 0 && secondChar <= 6) {
+        secCharValid = true;
+        console.log("second Character:" + secondChar + " " + secCharValid);
+    }
+    if (firstCharValid == false) {
+        console.log("Please enter a valid input " + firstCharacter);
+        alert("Please enter a valid input " + firstCharacter);
+    } else if (secCharValid == false) {
+        console.log("Please enter a valid input " + secondChar);
+    }
+    if (firstCharValid == true && secCharValid == true) {
+        valid = true;
+    }
+}
+
+
+}

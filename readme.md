@@ -135,3 +135,18 @@ objects contain state and behavior
         substring-returns a portion of a string
         trim-removes whitespace from around the string
         match
+
+        working on Battleship , stuck on parseGuess FIXED
+
+        random ships function 
+        *put in order
+
+        3. generate a random location for the new ship 
+
+        1. loop for the number of ships we want to create
+
+        4.  X should be 2. generate a random direction (vertical / horizontal) for the new ship
+        
+        2. X should be 5 add the new ship's location to the ships array
+        
+        5. X should be 4.  test to see if the new ships locations collide with any existing ships locations
