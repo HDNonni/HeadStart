@@ -35,7 +35,7 @@ let model = {//maintains the state of the game and tests for hits and misses
             //use indexOf to search array for matching value and return its index otherwise returns -1
             //let index = locations.indexOf(guess);
             if (ship.hits[index] === "hit") {
-                view.displayMessage("Oops, you already hit that location!")
+                view.displayError("Oops, you already hit that location!")
                 return true;
                 //so if index >= 0 user guess in array and have a hit  because if not match indexOf will return-1
             } else if (index >= 0) {
@@ -144,6 +144,7 @@ function init() {
     //click event to handle function
     //add click handler function
     fireButton.onclick = handleFireButton;
+    
     //to handle keypress
     let userGuess = document.getElementById("userGuess");
     //add new handler
@@ -181,14 +182,22 @@ function handleFireButton() {
     controller.processGuess(guess);
     //resets the form element input
     userGuess.value = "";
+    document.getElementById("userGuess").focus();
 }
 
 
 let view = {
+    messageAreaId: "messageArea",
+    messageArea: document.getElementById('messageArea'),
+
     //displays message in the message area, takes one argument
     displayMessage: function (msg) {
-        let messageArea = document.getElementById("messageArea")//.innerHTML = msg//set message area from the page
-        messageArea.innerHTML = msg;
+        this.messageArea.innerHTML = msg;
+        document.getElementById("messageArea").style.color = "green";
+    },
+    displayError: function(error) {
+        this.messageArea.innerHTML = error;
+        document.getElementById("messageArea").style.color = "red";
     },
     displayHit: function (location) {//take location of hit or miss as an argument
         //get cell by id and set it to class ship or miss to display
@@ -222,26 +231,26 @@ function parseGuess(guess) {
     if (guess === null || guess.length !== 2) {
         //check to make sure length of guess is 2 characters
         //console.log("Oops,please enter a letter and a number")
-        view.displayMessage("Oops, please enter a letter and a number")
+        view.displayError("Oops, please enter a letter and a number")
     } else {
         //get 1st character
         //commented and changed to add guess.charAt diectly to row
         //let firstChar = guess.charAt(0);
         //console.log("first Character: " + firstChar)
         //indexOf to get back a number 0-6
-        let row = alphabet.indexOf(guess.charAt(0));
+        let row = alphabet.indexOf(guess.charAt(0).toUpperCase());
         console.log("row check:" + row);
         //second char in string
         let column = guess.charAt(1);
         console.log("column check: " + column)
         //if NAN
         if (isNaN(row) || isNaN(column)) {
-            view.displayMessage("Oops, that isn't on the board!");
+            view.displayError("Oops, that isn't on the board!");
             //then checks for #'s betw 0 & 6, relying on type to conversiom to convert to a number for comparison 
             //rely on boardsize so that the size of board can be changed rather than hard coding the number 6
         } else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardsize) {
             //console.log("Oops, that's off the board!");
-            view.displayMessage("Oops, that's off the board");
+            view.displayError("Oops, that's off the board");
         } else {
             //row is a # and column a string so type conversion willl change both to a string
             return row + column;
@@ -271,7 +280,6 @@ let controller = {
             }
 
         }
-        console.log(messageArea);
     }
 };
 
