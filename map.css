@@ -1,0 +1,18 @@
+body, html{
+    background-color: linen;
+}
+img{
+    display: inline-block;
+    margin-left: 90px;
+}
+
+.heading{
+    text-align: center;
+    text-decoration: underline;
+    color:darkred;
+}
+#coords{
+    text-align: center;
+    font-size:25px; 
+    border: 1px dashed darkred;
+}

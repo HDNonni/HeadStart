@@ -534,3 +534,15 @@ let toyTrain = new train ("choo choo");
 toyTrain.choo();
 console.log(typeof toyTrain);
 console.log(toyTrain instanceof train);
+
+let inputButton = document.getElementById("inputButton").addEventListener("click", function(){
+    console.log("Button Clicked");
+    let inputForm = document.getElementById("inputForm").value;
+    console.log("InputForm: " + inputForm);
+})
+//handler(callback) events
+function pageLoadEvent(){
+    console.log("I'm Loaded")
+}
+//assign the name of the handler to windows onload property to callthe function
+window.onload = pageLoadEvent;

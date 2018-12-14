@@ -1,4 +1,4 @@
-Using HeadStart JavaScript to increase understanding of javaScript
+Using HeadFirst JavaScript to increase understanding of javaScript
 
 
 Steps
@@ -150,3 +150,24 @@ objects contain state and behavior
         2. X should be 5 add the new ship's location to the ships array
         
         5. X should be 4.  test to see if the new ships locations collide with any existing ships locations
+
+    Event Handlers (callbacks / listeners)
+
+    window.onload to be sure page loaded before script runs
+
+asychronous code is code that is invoked later if and when an event occurs
+
+definitions
+Target - Hold object on  which the event occcurred, most often an element object
+
+Types - a string like 'click' or 'load' that tells what just happened
+
+timeStamp - When an event happened
+
+keyCode - what key user pressed
+
+clientX - how far side to side of browser window
+
+clientY - how far top to bottom of browser window
+
+touches - how many fingers touched the screen
