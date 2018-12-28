@@ -1,0 +1,19 @@
+body, html{
+    background-color: lightgray
+}
+
+#heading{
+    text-align: center;
+    color:maroon;
+    text-decoration: underline;
+    font-variant: small-caps
+}
+table, th, td{
+    border: 1px solid black;
+}
+.canFly{
+    background-color: green;
+}
+.cannotFly{
+    background-color: red;
+}

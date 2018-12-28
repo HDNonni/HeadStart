@@ -454,7 +454,7 @@ function validatePhone(phoneNumber) {
     }
 }
 //this is mine/ returns false so its incorrect
-console.log(validatePhone(123-2456))
+console.log(validatePhone(123 - 2456))
 //2 other methods that work!
 /**
  * function validate(phoneNumber) {
@@ -509,12 +509,12 @@ function validate(phoneNumber) {
     }
     return true;
 }
-console.log(validate(123-4567));
+console.log(validate(123 - 4567));
 
 //what does all this mean?
 function duck(sound) {
     this.sound = sound;
-    this.quack = function() {
+    this.quack = function () {
         console.log(this.sound);
     }
 }
@@ -524,25 +524,145 @@ toy.quack();
 console.log(typeof toy);//returns object
 console.log(toy instanceof duck);//returns true
 
-function train(whistle){
+function train(whistle) {
     this.whistle = whistle;
-    this.choo  = function(){
+    this.choo = function () {
         console.log(this.whistle);
     }
 }
-let toyTrain = new train ("choo choo");
+let toyTrain = new train("choo choo");
 toyTrain.choo();
 console.log(typeof toyTrain);
 console.log(toyTrain instanceof train);
 
-let inputButton = document.getElementById("inputButton").addEventListener("click", function(){
+let inputButton = document.getElementById("inputButton").addEventListener("click", function () {
     console.log("Button Clicked");
     let inputForm = document.getElementById("inputForm").value;
     console.log("InputForm: " + inputForm);
 })
 //handler(callback) events
-function pageLoadEvent(){
+function pageLoadEvent() {
     console.log("I'm Loaded")
 }
 //assign the name of the handler to windows onload property to callthe function
 window.onload = pageLoadEvent;
+
+//setTimeout
+
+function timeOutHandler() {
+    console.log("Time Out event for 5 seconds")
+}
+setTimeout(timeOutHandler, 5000);
+
+//using onresize for another event which prints to the html as the page is resized
+function resize() {
+    var element = document.getElementById("display");
+    element.innerHTML = element.innerHTML + " that tickles!";
+}
+window.onresize = resize;
+
+let addOne = function (x) {
+    return x + 1;
+};
+let six = addOne(5);
+console.log(six);
+
+let migrating = true;
+
+//function expression
+let fly = function (num) {
+    for (let i = 0; i < num; i++) {
+        console.log("Flying")
+    }
+};
+//function declaration (quack variable is a reference to the function)
+function quack(num) {
+    for (let i = 0; i < num; i++) {
+        console.log("Quacking")
+    }
+};
+if (migrating) {
+    quack(4);
+    fly(5);
+}
+
+// var winner = function () { alert("WINNER!") };
+// var loser = function () { alert("LOSER!") };
+// //  test 
+// winner();
+// //  assign to other variables for practice
+// var a = winner;
+// var d = loser;
+// var c = loser;
+// a();
+// d();
+
+
+//define a function that thakes a function as an argument and calls that function
+function sayIt(translator) {
+    var phrase = translator("Hello");
+    alert(phrase);
+   }
+   function hawaiianTranslator(word) {
+    if (word === "Hello") return "Aloha";
+    if (word === "Goodbye") return "Aloha";
+   }
+   //passing the function hawaiianTranslator to the function sayIt
+   //sayIt(hawaiianTranslator);
+
+let addOnes = function(x){
+    return x + 1
+}
+let sixes = addOnes(5);
+document.write(sixes);
+
+//function fun with param of echo
+function fun(echo){
+    //prints hello boo and reference to the function
+    console.log(echo);
+};
+//invoke fun function w/ argument "hello" that will print in console
+fun("hello");
+
+//new function, param aFunction ?being assigned "boo"?
+// coming from 1st console log ,echo but prints refernce to function
+function boo(aFunction){
+    aFunction("boo");
+}
+//boo function calling fun function
+boo(fun);
+//should print hello but prints the referenc to the function fun
+console.log(fun);
+//fun function calling boo 
+fun(boo);
+//assign moreFun to fun
+let moreFun = fun;
+//so should print "hello Again" coming from 1st console log ,echo
+moreFun("hello Again");
+
+//new function that returns the fun function
+function echoMaker(){
+    return fun;
+}
+//assigning bigFun to echoMaker that returns fun function that should print "hello Again"
+let bigFun = echoMaker();
+//incvoke bigFun with string and if print to console echo function should print "is there an echo?"
+// coming from 1st console log ,echo but prints as expected
+bigFun("Is there an echo?")
+//prints reference to the original echo function because it returns the reference to 'fun'
+console.log(bigFun);
+
+function addN(n) {
+    var adder = function(x) {
+    return n + x;
+    };
+    return adder;
+   }
+//    This function takes one argument n. It
+//    then creates a function that also takes one
+//    argument, x, and adds n and x together.
+//    That function is returned.
+//always adds 2 to the number
+   var add2 = addN(2);
+   console.log(add2(10));
+   console.log(add2(100));

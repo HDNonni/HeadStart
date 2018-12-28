@@ -171,3 +171,52 @@ clientX - how far side to side of browser window
 clientY - how far top to bottom of browser window
 
 touches - how many fingers touched the screen
+
+Code written to handle events is different from code
+that executes top to bottom and then completes. Event
+handlers can run at any time and in any order: they are
+asynchronous
+
+a function designed to react to an event is called an event handler
+
+function declarations vs function expression
+
+when browser parses the page it looks for function declarations 1st when it finds one if assign the resulting reference to a variable with the same name as the function
+
+Function declarations are evaluated
+before the rest of the code is evaluated.
+
+Function expressions get evaluated
+later, with the rest of the code.
+
+A function declaration doesn’t return a
+reference to a function; rather it creates
+a variable with the name of the function
+and assigns the new function to it.
+
+A function expression returns a
+reference to the new function created
+by the expression.
+❏
+You can hold function references in
+variables.
+
+The process of invoking a function
+created by a declaration is exactly the
+same for one created with an expression.
+
+Function declarations are statements;
+function expressions are used in
+statements.
+
+An expression is anything that
+evaluates to a value. 3+4 evaluates to 7,
+Math.random() * 6 evaluates to a random
+number, and a function expression evaluates
+to a function reference. 
+
+First Class : a value that can be treated like any other value in a progamming language including the ability to be assigned to a variable , passed as an argument and returned from a function
+
+❏ You can assign functions to variables.
+❏ You can pass functions to functions.
+❏ You can return functions from functions

@@ -1,0 +1,8 @@
+body, html{
+    box-sizing: border-box;
+    background-color: bisque;
+}
+#heading{
+    text-align: center;
+    color: rebeccapurple;
+}
