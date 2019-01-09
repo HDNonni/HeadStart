@@ -12,3 +12,12 @@ html{
 .redText{
     color:red;
 }
+button{
+    margin: 20px;
+    padding:15px;
+    background-color: pink;
+}
+.change{
+    padding:15px;
+    margin-left: 25px;
+}

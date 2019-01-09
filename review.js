@@ -388,14 +388,14 @@ console.log(loc1);
 
 
 function lieDetectorTest() {
-    var lies = 0;
+    let lies = 0;
     //any object is truthy even empty ones
-    var stolenDiamond = {};
+    let stolenDiamond = {};
     if (stolenDiamond) {
         console.log("You stole the diamond");
         lies++;
     }
-    var car = {
+    let car = {
         //did not steal car because null falsey
         keysInPocket: null
     };
@@ -409,7 +409,7 @@ function lieDetectorTest() {
         lies++;
     }
     //empty array truthy
-    var foundYouAtTheCrimeScene = [];
+    let foundYouAtTheCrimeScene = [];
     if (foundYouAtTheCrimeScene) {
         console.log("A sure sign of guilt");
         lies++;
@@ -420,22 +420,22 @@ function lieDetectorTest() {
         lies++;
     }
     //non empty string is truthy even if oonly has 1 space!
-    var yourName = " ";
+    let yourName = " ";
     if (yourName) {
         console.log("Guess you lied about your name");
         lies++;
     }
     return lies;
 }
-var numberOfLies = lieDetectorTest();
+let numberOfLies = lieDetectorTest();
 console.log("You told " + numberOfLies + " lies!");
 if (numberOfLies >= 3) {
     console.log("Guilty as charged");
 }
 
-var text = "YOU SHOULD NEVER SHOUT WHEN TYPING";
+let text = "YOU SHOULD NEVER SHOUT WHEN TYPING";
 //calling a method on a string 
-var presentableText = text.toLowerCase();
+let presentableText = text.toLowerCase();
 //string with a property (.length)
 if (presentableText.length > 0) {
     console.log(presentableText);
@@ -463,7 +463,7 @@ console.log(validatePhone(123 - 2456))
     if (phoneNumber.length !== 8) || phoneNumber.length < 7(added to check with or without dash) {
         return false;
     }
-    for (var i = 0; i < phoneNumber.length; i++) {
+    for (let i = 0; i < phoneNumber.length; i++) {
         if (i === 3) {
             uses charAt to examnine each character of the string
             if (phoneNumber.charAt(i) !== '-') {
@@ -483,9 +483,9 @@ function validate(phoneNumber) {
         return false;
     }
     this uses substring to create 3 character
-    var first = phoneNumber.substring(0,3);
+    let first = phoneNumber.substring(0,3);
     again at index 4 
-    var second = phoneNumber.substring(4);
+    let second = phoneNumber.substring(4);
     tests in one conditional statement for charAt and for 'numbers' 
     if (phoneNumber.charAt(3) !== "-" || isNaN(first) || isNaN(second)) {
         return false;
@@ -498,8 +498,8 @@ function validate(phoneNumber) {
         phoneNumber.length < 7) {
         return false;
     }
-    var first = phoneNumber.substring = (0, 3);
-    var second = phoneNumber.substring = (3) //(phoneNumber.length - 4);
+    let first = phoneNumber.substring = (0, 3);
+    let second = phoneNumber.substring = (3) //(phoneNumber.length - 4);
     if (isNaN(first) || isNaN(second)) {
         return false;
     }
@@ -518,7 +518,7 @@ function duck(sound) {
         console.log(this.sound);
     }
 }
-//create a new duck and assign it to the toy variable
+//create a new duck and assign it to the toy letiable
 let toy = new duck("quack quack");
 toy.quack();
 console.log(typeof toy);//returns object
@@ -556,7 +556,7 @@ setTimeout(timeOutHandler, 5000);
 
 //using onresize for another event which prints to the html as the page is resized
 function resize() {
-    var element = document.getElementById("display");
+    let element = document.getElementById("display");
     element.innerHTML = element.innerHTML + " that tickles!";
 }
 window.onresize = resize;
@@ -570,54 +570,69 @@ console.log(six);
 let migrating = true;
 
 //function expression
+
 let fly = function (num) {
-    for (let i = 0; i < num; i++) {
-        console.log("Flying")
+    //added function declaration inside fly function expression
+    let sound = "Flying";
+    function wingFlapper() {
+        console.log(sound);
+    } for (let i = 0; i < num; i++) {
+        //calling wingFlapper in the for loop?
+        wingFlapper();
+        //console.log("Flying")
     }
 };
-//function declaration (quack variable is a reference to the function)
+//function declaration (quack  is a reference to the function)
 function quack(num) {
+    let sound = "Quack";
+    //added a functin expression
+    let quaker = function () {
+        console.log(sound);
+    }
     for (let i = 0; i < num; i++) {
+        quaker();
         console.log("Quacking")
     }
 };
+//if this part of the code was before the fly function expression then 
+//it would not evaluate to fly because of the position of the function expression
 if (migrating) {
     quack(4);
     fly(5);
 }
 
-// var winner = function () { alert("WINNER!") };
-// var loser = function () { alert("LOSER!") };
+// let winner = function () { alert("WINNER!") };
+// let loser = function () { alert("LOSER!") };
 // //  test 
 // winner();
-// //  assign to other variables for practice
-// var a = winner;
-// var d = loser;
-// var c = loser;
+// //  assign to other letiables for practice
+// let a = winner;
+// let d = loser;
+// let c = loser;
 // a();
 // d();
 
 
 //define a function that thakes a function as an argument and calls that function
 function sayIt(translator) {
-    var phrase = translator("Hello");
+    let phrase = translator("Hello");
     alert(phrase);
-   }
-   function hawaiianTranslator(word) {
+}
+function hawaiianTranslator(word) {
     if (word === "Hello") return "Aloha";
     if (word === "Goodbye") return "Aloha";
-   }
-   //passing the function hawaiianTranslator to the function sayIt
-   //sayIt(hawaiianTranslator);
+}
+//passing the function hawaiianTranslator to the function sayIt
+//sayIt(hawaiianTranslator);
 
-let addOnes = function(x){
+let addOnes = function (x) {
     return x + 1
 }
 let sixes = addOnes(5);
 document.write(sixes);
 
 //function fun with param of echo
-function fun(echo){
+function fun(echo) {
     //prints hello boo and reference to the function
     console.log(echo);
 };
@@ -626,7 +641,7 @@ fun("hello");
 
 //new function, param aFunction ?being assigned "boo"?
 // coming from 1st console log ,echo but prints refernce to function
-function boo(aFunction){
+function boo(aFunction) {
     aFunction("boo");
 }
 //boo function calling fun function
@@ -641,7 +656,7 @@ let moreFun = fun;
 moreFun("hello Again");
 
 //new function that returns the fun function
-function echoMaker(){
+function echoMaker() {
     return fun;
 }
 //assigning bigFun to echoMaker that returns fun function that should print "hello Again"
@@ -653,16 +668,377 @@ bigFun("Is there an echo?")
 console.log(bigFun);
 
 function addN(n) {
-    var adder = function(x) {
-    return n + x;
+    let adder = function (x) {
+        return n + x;
     };
     return adder;
-   }
+}
 //    This function takes one argument n. It
 //    then creates a function that also takes one
 //    argument, x, and adds n and x together.
 //    That function is returned.
 //always adds 2 to the number
-   var add2 = addN(2);
-   console.log(add2(10));
-   console.log(add2(100));
+let add2 = addN(2);
+console.log(add2(10));
+console.log(add2(100));
+
+//sort method for arrays/ put numbers in ascending order
+
+let numbersArray = [60, 50, 62, 58, 54, 54]
+
+function compareTwoNumbers(num1, num2) {
+    if (num1 >= 50 && num2 < 65) {
+        console.log(num1, num2);
+    } else {
+        console.log(false)
+    }
+
+}
+compareTwoNumbers(50, 66)
+
+//sort method to put numbers in ascending order
+function compareNumbers(num1, num2) {
+    //return 1 if 1st# >2nd or something greater than 0
+    if (num1 > num2) {
+        return 1;
+        //return 0 if equal
+    } else if (num1 === num2) {
+        return 0;
+        //less than 0 if 1st < 2nd
+    } else {
+        return -1
+    }
+}
+console.log(compareNumbers(84, 74))
+
+//?loop to shorten code
+/**
+ * for( let i = 0 ; i < numbersArray.length; i++){
+ * }
+ *  or sort
+ * When the sort() function compares two values, it sends the values to the compare function, and sorts the values according to the returned (negative, zero, positive) value.
+
+
+ */
+function useSortToCompare() {
+    numbersArray.sort(function (a, b) {
+        return a - b;
+    })
+    console.log(numbersArray)
+}
+useSortToCompare();
+//or pass the array to the fucntion by calling sort method
+numbersArray.sort(compareNumbers);
+//works both ways as expected
+//sort method is destructive in that it changes the array rather than returning a new array that is sorted
+console.log(numbersArray);
+
+
+// make this function(compareNumbers) a single line
+//of code by simply returning the result of
+//substracting num2 from num1.
+//however does not work as expected like compareNumbers does
+function compareNumbersAgain(num1, num2) {
+    return num1 - num2
+}
+console.log(compareNumbersAgain(34, 74))
+
+//list numbers in descending order
+function compareNumbersDesc(num1, num2) {
+    if (num2 > num1) {
+        return 1;
+    } else if (num1 === num2) {
+        return 0;
+    } else {
+        return -1;
+    }
+}
+numbersArray.sort(compareNumbersDesc);
+console.log(numbersArray)
+
+window.onload = init;
+let cookies = {
+    instructions: "Preheat oven to 350...",
+    bake: function (time) { //anon
+        console.log("Baking the cookies.");
+        setTimeout(done, time);
+    }
+};
+//function init() {
+let button = function () {
+    document.getElementById("bake");
+    button.onclick = handleButton;
+}
+//function handleButton() {
+console.log("Time to bake the cookies.");
+let temp = function (temp) {
+    cookies.bake(2500);
+}
+function done() {
+    console.log("Cookies are ready, take them out to cool.");
+    console.log("Cooling the cookies.");
+    let cool = function () {
+        console.log("Cookies are cool, time to eat!");
+    };
+    setTimeout(cool, 1000);
+}
+done()
+//reworked to make simpler and adding anon function
+// window.onload = function () {
+//     let button = document.getElementById("bake");
+//     button.onclick = function () {
+//         console.log("Time to bake the cookies.");
+//         cookies.bake(2500);
+//     };
+// };
+
+// let cookies = {
+//     instructions: "Preheat oven to 350...",
+//     bake: function (time) {
+//         console.log("Baking the cookies.");
+//         setTimeout(done, time);
+//     }
+// };
+function done() {
+    //alert("Cookies are ready, take them out to cool.");
+    console.log("Cooling the cookies.");
+    let cool = function () {
+        //alert("Cookies are cool, time to eat!");
+    };
+    setTimeout(cool, 1000);
+}
+// reworked the code to create two anonymous
+// function expressions, one for the init function,
+// and one for the handleButton function.Now we assign a function expression
+// to the window.onload property...
+//...and assign a function
+// expression to the button.
+// onclick property.
+
+//pass the cool function directly to setTimeOut
+setTimeout(function () {
+    //alert("Cookies are cool, time to eat!");
+}, 1000);
+
+//decreasign verbosity
+//reg func about cookies being down
+function cookieAlarm() {
+    console.log("Cookie Alarm Function 1")
+}
+//passing the function as an arguement to setTimeOut 
+setTimeout(cookieAlarm, 1000);
+
+//using a function expression (anonymous function)
+//syntax is tricky , pay close attn to bracket placment and commas
+setTimeout(function () {
+    console.log("Cookie Alarm Function 2");
+}, 2000);
+
+//rewriting to anon functions
+
+function vaccine(dosage) {
+    if (dosage > 0) {
+        let inject = (dosage);
+    }
+    console.log(dosage);
+}
+//administer(patient,vaccine, time); from the book pg 482 , alot not defined in this function
+vaccine(10);
+
+//rewrite  to anonymous function expression (watch syntax)
+//? how to define all this to make it work
+// administer(patient, function(dosage){
+//     if(dosage > 10){
+//         inject(dosage);
+//     }
+// }, time)
+
+let secret = "007";
+function getSecret() {
+    //secret here is a free varaivle in getValue
+    let secret = "008";
+
+    function getValue() {
+        return secret;
+    }
+    //getValue is not returnes from getSecrest so we never see the closure outside the context in whis it was created
+    return getValue();
+}
+console.log(getSecret());
+
+let secrets = "007";
+function getSecrets() {
+    let secrets = "008";
+    //here a closure is created and returned from getSecret, so when we invoke getValueFun (getVlaue)
+    //in a diff context(global scope)we use the value of secret in the environment
+    function getValues() {
+        return secrets;
+    }
+    return getValues;
+}
+let getValueFun = getSecrets();
+//invoked in the global environ to use global variable , secret
+console.log(getValueFun());
+
+//lexical scope
+
+let justAVar = "Global Variable";
+//this function defines a new lexical scope that now has a local variable 
+//justAVar that shadows the global variable with the same name
+function whereAreYou() {
+    let justAVar = "Now Local";
+    //add a nested function that refers to justAVar, closest enclosing fucntion
+    function inner() {
+        return justAVar;
+    }
+    //invoke inner and returns local variable
+    //return inner();
+    //but what happens when inner returned rather than invoked
+    return inner;
+    //return justAVar;
+}
+//*and returns the local variable because we use lexical scope and go to the nearest function scope
+//*let result = whereAreYou();
+//*console.log(result)
+//call whereAreYou and get back a reference to inner function and assign it to a variable innerFunction
+let innerFunction = whereAreYou();
+//invoke innerFunction , capture its output anin result and display the result
+let result = innerFunction();
+console.log(result);//still local
+
+//using closure to implement a counter
+// with global variable
+let count = 0;
+
+function counter() {
+    count += 1;
+    return count;
+}
+
+console.log(counter());
+//with closure
+
+
+function foo() {
+    console.log("foo");
+}
+
+function makeCounter() {
+    //now local variable because in function
+    let count = 0;
+    //increment the count variable in the counter function and return
+    function counter() {
+        count += 1;
+        return count;
+    }
+    //then return the counter function which is the closure that holds 
+    //count in its environment
+
+    // return counter
+    return foo;
+}
+//call makeCounter that creates a counter function and returns it along with an 
+//environment containing the free variable count (creates a closure)
+//when makeCounter called we get back a closure, a function with an environment
+let doCount = makeCounter();
+//doCount executes the body of the counter function which is a refernce to counter
+console.log(doCount());
+console.log(makeCounter()())
+
+function makePassword(password) {
+
+    //function that is returned from makePassword is a "closure" with 
+    //an envrionment containing the "free variable" password
+    return function guessPassword(passwordGuess) {
+        //using a named function expression,guessPassword,as a way to refer to the name of the inner 
+        //function, but invoke the returned function using tryGuess and not guessPassword
+        return (passwordGuess === password)
+    };
+}
+//pass in value "secret" to makePassword, this is the value thats storedin the "closure's " environ
+let tryGuess = makePassword("secret");
+//when invoked, tryGuess value for password is compared in the environment for tryGuess 
+console.log("Guess is nope: " + tryGuess("nope"));
+
+function multN(n) {
+    //function that is returned from multN is a closure with an environ containing a free variable
+    return function multN(x) {
+        return n * x
+    };
+}
+//invoke multN(6) and get back a functiion that multiplies and number by 6
+let multBy6 = multN(6)
+console.log("Multiply by 6: " + multBy6(6));
+console.log("Multiply by 6: " + multBy6(9));
+
+//modify makeCounter with no arguments but defines a count varaible
+//then creates and returns an object with one method, increment
+//this method increments the count variable and returns it
+
+function makeAnotherCounter() {
+    var count = 0;
+    //returning an object with increment method
+    return {
+        increment: function () {
+            //increment method has a free variable ,count so , increment is a closure with an 
+            //environment containing the variable count
+            count++;
+            return count;
+
+        }
+    };
+}
+//call the function and get back an object with a method,* a closure
+var counter = makeAnotherCounter()
+//the method references the varaible count in its environment
+console.log(counter.increment());
+console.log(counter.increment());
+console.log(counter.increment());
+
+
+// the function we’re passing into setTimeout is a closure because it
+// comes along with an environment that binds the free variable, doneMessage, to the
+// string “Cookies are done!”. 
+function makeTimer(doneMessage, n) {
+    setTimeout(function () {
+        console.log(doneMessage);
+    }, n);
+}
+makeTimer("Cookies are done!", 1000);
+
+function setTimer(doneMessage, n) {
+    //closure created here
+    setTimeout(function () {
+        console.log(doneMessage);
+    }, n);
+    //changing the value of doneMessage after we call setTimeout (after closure envrion)
+    doneMessage = "OUCH!";
+}
+setTimer("Cookies are done!", 1000);
+
+window.onload = function () {
+    //all variables local to onload
+
+    let count = 0;
+    let message = " You Clicked Me ";
+    let div = document.getElementById("message");
+
+    let button = document.getElementById("clickme");
+    //set click handler as a function expression assigned to the button onclick
+    //property, so we can reference  div message and count in the function(lexical scoping)
+
+    //the function expression has 3 free variables :div, message and count, so a closure is created for the clickhandler function
+    //what gets assigned to the buttons onclick property is a closure
+    button.onclick = function () {
+        count++;
+        div.innerHTML = message + count + " Times!"
+    };
+};
+
+// (function (food) {
+//     if (food === "cookies") {
+//         alert("More please");
+//     } else if (food === "cake") {
+//         alert("Yum yum");
+//     }
+// })("cake");

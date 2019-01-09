@@ -198,6 +198,8 @@ A function expression returns a
 reference to the new function created
 by the expression.
 ❏
+a function reference is a value that refers to a function
+
 You can hold function references in
 variables.
 
@@ -220,3 +222,55 @@ First Class : a value that can be treated like any other value in a progamming l
 ❏ You can assign functions to variables.
 ❏ You can pass functions to functions.
 ❏ You can return functions from functions
+
+function reference is a first class value
+
+array sort method takes a function that knows how to compare two values in an array
+
+If code expects a function reference then a function expression can be put in its place because expressions evaluat to a function reference;
+If a fucntion is expected as an argument , it can be passed an expression which again evaluates to a reference before it is passed;
+Same thing if you need to return a function from within a fucntion , just return a funciton expression
+
+
+within a function, if you define a nested function with a declaration,
+that nested function is defined everywhere within the body of
+the function. On the other hand, if you create a nested function
+using a function expression, then that nested function is defined only
+after the function expression is evaluated.
+
+lexical : to determine the scope of avariable by reading the structure of the code as opposed to waiting until the code runs to figure it out
+
+Remember that JavaScript functions are always
+evaluated in the same scoping environment in which
+they were defined. Within a function, if you want to
+determine where a variable is coming from, search in
+its enclosing functions, from the most nested to the least.
+
+Closure, noun: A closure is a function .”
+together with a referencing environment.
+
+ a function typically has
+local variables in its code body (including any parameters it has),
+and it also might have variables that aren’t defined locally,
+which we call free variables. The name free comes from the fact
+that within the function body, free variables aren’t bound
+to any values (in other words, they’re not declared locally
+in the function). Now, when we have an environment that
+has a value for each of the free variables, we say that we’ve
+closed the function. And, when we take the function and the
+environment together, we say we have a closure. 
+
+A closure results when we combine a
+function that has free variables with
+an environment that provides variable
+bindings for all those free variables.
+
+ You
+create a closure whenever you have a reference to a function that has free variables,
+and that function is executed outside of the context in which it was created. 
+
+One thing that often misleads people learning closures is that they think the environment in the
+closure must have a copy of all the variables and their values. It doesn’t. In fact, the environment
+references the live variables being used by your code, so if a value is changed by code outside your
+closure function, that new value is seen by your closure function when it is evaluated.
+
