@@ -274,3 +274,163 @@ closure must have a copy of all the variables and their values. It doesn’t. In
 references the live variables being used by your code, so if a value is changed by code outside your
 closure function, that new value is seen by your closure function when it is evaluated.
 
+A function declaration is defined
+before the rest of your code is
+evaluated.
+ A function expression is evaluated
+at runtime with the rest of your
+code, and so is not defined until
+the statement in which it appears is
+evaluated.
+ You can pass a function expression
+to another function, or return a
+function expression from a function.
+ A function expression evaluates to a
+function reference, so you can use
+a function expression anywhere you
+can use a function reference.
+
+Lexical scope means that we can
+determine the scope of a variable by
+reading our code.
+
+Closures are a function along with a
+referencing environment. 
+
+A closure captures the value of
+variables in scope at the time the
+closure is created.
+ Free variables in the body of a
+function are variables that are not
+bound in the body of that function.
+ If you execute a function closure in
+a different context in which it was
+created, the values of free variables
+are determined by the referencing
+environment.
+ Closures are often used to capture
+state for event handlers.
+
+object constructors
+The first thing new does is create a new, empty object:
+
+Next, new sets 'this' to point to the new object
+
+For object constructors The only thing
+you don’t want to do is return a value
+(other than this) from a constructor
+because that will cause the
+constructor to not return the object
+it’s supposed to be constructing. 
+
+Match parameter and property names for clarity
+
+When you call a constructor
+(to create an object) the value of
+this is set to the new object that’s
+being created so all the code that is
+evaluated in the constructor applies
+to that new object. 
+
+Later, when you call a method on
+an object, this is set to the object
+whose method you called. So the
+this in your methods will always
+refer to the object whose method
+was called. 
+
+Remember that 'new' first creates a new object before assigning it to this (and
+then calling your constructor function). If you don’t use 'new', a new object will never be created.
+❏ That means any references to this in your constructor won’t refer to a new object, but rather, will refer to the global object of your application,
+in browsers that is thw indow object.
+❏ If you don’t use 'new' there’s no object to return from the constructor, which means there is no object assigned to the darkside variable
+
+read page 535 for clarification of the 'new' keyword and constructors
+
+Webpages that we see in our web browsers make up the Web; the network of interconnected computers around the world that enable us to see those web pages make up the Internet.
+Websites are static, meaning they are not updated—at least not all that often.
+Web applications are a whole different beast. Like desktop applications (Word, Photoshop, Skype), web applications are dynamic and ever-changing. They rely on you to interact with them, whether by contributing content (YouTube, Twitter, Facebook) or by gathering data from other sources and presenting it to you (Mint, Google Analytics, Klout) or a little bit of both!
+
+constructed objects can have their own properties
+
+You can do the same with objects created from constructors:
+Here's our dog Fido, created
+with the Dog constructor.
+
+var fido = new Dog("Fido", "Mixed", 38);
+
+We can add a new property just by
+assigning it a value in our object.
+Or we can get rid of a property by
+using the delete operator.
+
+fido.owner = "Bob";
+delete fido.weight;
+
+You can even add new methods if you like:
+To add a method just assign the method
+to a new property name in the object.
+
+fido.trust = function(person) {
+};
+
+return (person = = = "Bob");
+
+Anonymous function alert!
+See, they're everywhere!
+
+Notice that here we’re changing only the fido object. If we add a method
+to fido , only fido has that method. No other dogs have it:
+This code works because trust is defined in
+the fido object. So notBite is true.
+
+var notBite = fido.trust("Bob");
+var spot = new Dog("Spot", "Chihuahua", 10);
+notBite = spot.trust("Bob");
+This code doesn't work because spot doesn't have
+a method trust, resulting in: “TypeError: Object
+#<Dog> has no method ‘trust’"
+
+object literal for small numbers oof objects
+
+constructors to create many similar objects
+capitalize constructors name  and used with ' new' keyword (functions)
+use 'this' to access the object beign constructed
+crossword page 554
+across
+2.function
+7.date
+9.propertiesX should be parameters
+    . You can use an object literal pass arguments to a constructor when the constructor has lots of parameters
+10.instance
+11.cookies
+14.object
+15.typeerror
+down
+1.Frankensteinian
+3.constructor
+4.operator* this is what'new' is
+5.marine
+6.properties
+8.testtube
+12.fileX type
+13.new
+
+prototype objects , where objects can inherit and extend the behavior of other objects, create extensions oof other objects
+when an object inherits form another it gains access to all its methods and properties
+JavaScript uses what is known as prototypal
+inheritance, and the object you’re inheriting behavior from is called
+the prototype.
+When you call an object’s method, this is
+set to the object whose method was called.
+If the method is not found in that object,
+and is found in the prototype, that doesn’t
+change the value of this . this always
+refers to the original object—that is, the
+object whose method was called—even if
+the method is in the prototype. So, if we
+find the bark method in the prototype,
+then we call the method, with this set to
+the original dog object, giving us the result
+we want, like “Fluffy says Woof !”.
+

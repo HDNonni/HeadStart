@@ -1042,3 +1042,72 @@ window.onload = function () {
 //         alert("Yum yum");
 //     }
 // })("cake");
+
+
+
+//exercise
+function Duck(type, canFly) {
+    this.type = type;
+    this.canFly = canFly;
+    //add method to constructor
+    this.sound = function () {
+        if (this.canFly === false) {
+            console.log(this.type + " speaks human");
+        } else {
+            console.log(this.type + " quacks to communicate");
+        }
+    };
+}
+let donald = new Duck("Donald", false);
+let daisy = new Duck("Daisy", false);
+let newComber = new Duck("NewComber", true);
+let ducks = [donald, daisy, newComber];
+
+for (let i = 0; i < ducks.length; i++) {
+    //let kind = "water";
+    if (ducks[i].canFly == false) {
+        console.log(ducks[i].type + " likes to stay on land")
+    }
+    else {
+        console.log(ducks[i].type + " likes to swim")
+    }
+    for (let i = 0; i < ducks.length; i++) {
+        ducks[i].sound()
+    }
+}
+
+//exercise pg 531
+//create coffee drinks
+//method that returns a string "You've ordered blah blah"
+
+function Coffee(roast, ounces){
+    this.roast = roast;
+    this.ounces = ounces
+    //need method that returns a string depending on the size;
+    //getsize looks at ounces prop and returns size 
+    this.getSize = function(){
+        //this will be the object of the method thats called
+        if(this.ounces === 8){
+            return "small";
+        }else if (this.ounces === 12){
+            return "medium";
+        }else if(this.ounces === 16){
+            return 'large';
+        }
+    };
+    //returns a string descrip of object, uses getsize method to ge tthe size
+    this.getString = function(){
+        return "Thank you for your order of a " + this.getSize() + " " + this.roast + " coffee.";
+    }
+
+}
+//create a coffee object using the new keyword
+let houseBlend = new Coffee("House Blend", 12);
+console.log(houseBlend.getString());
+    /*let roast = "";
+    let small = new Coffee(roast, 8);
+    let medium = new Coffee(roast, 12);
+    let large = new Coffee(roast, 16);*/
+
+
+    
